@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN//EN"
+	"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="attributeService" class="org.alfresco.repo.attributes.AttributeServiceImpl">
+        <property name="propertyValueDAO">
+            <ref bean="propertyValueDAO"/>
+        </property>
+    </bean>
+
+
+    <!-- Cleanup job for alf_prop_xxx tables -->
+    <bean id="propTablesCleanupJobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass">
+            <value>org.alfresco.repo.attributes.PropTablesCleanupJob</value>
+        </property>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="propTablesCleaner">
+                    <ref bean="propTablesCleaner" />
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="propTablesCleaner" class="org.alfresco.repo.attributes.PropTablesCleaner">
+        <property name="jobLockService" ref="JobLockService"/>
+        <property name="propertyValueDAO" ref="propertyValueDAO"/>
+    </bean>
+
+    <bean id="propTablesCleanupTrigger" class="org.alfresco.util.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="propTablesCleanupJobDetail" />
+        </property>
+        <property name="scheduler">
+            <ref bean="schedulerFactory" />
+        </property>
+        <property name="cronExpression">
+            <value>${attributes.propcleaner.cronExpression}</value>
+        </property>
+        <property name="startDelayMinutes">
+            <value>${system.cronJob.startDelayMinutes}</value>
+        </property>
+    </bean>
+</beans>
