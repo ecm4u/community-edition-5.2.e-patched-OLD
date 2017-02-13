@@ -202,10 +202,12 @@
       <url-pattern>/wcs/*</url-pattern>
    </filter-mapping>
    
+   <!-- ALF-21521 
    <filter-mapping>
       <filter-name>Global Authentication Filter</filter-name>
       <url-pattern>/api/*</url-pattern>
    </filter-mapping>
+   -->
 
    <filter-mapping>
       <filter-name>WebDAV Authentication Filter</filter-name>
