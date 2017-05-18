@@ -10,7 +10,7 @@
   </parent>
   <artifactId>alfresco-parent</artifactId>
   <packaging>pom</packaging>
-  <version>5.2.e</version>
+  <version>5.2.e.ecm4u.1</version>
   <name>Alfresco</name>
 
   <licenses>
@@ -53,23 +53,23 @@
     </pluginRepository>
   </pluginRepositories>
 
-  <distributionManagement>
-      <repository>
-          <id>alfresco-internal</id>
-          <url>https://artifacts.alfresco.com/nexus/content/repositories/internal-staging</url>
-      </repository>
-      <snapshotRepository>
-          <id>alfresco-internal-snapshots</id>
-          <url>${maven.distributionManagement.snapshot.url}</url>
-      </snapshotRepository>
-  </distributionManagement>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ecm4u-snapshots</id>
+            <name>ecm4u Snapshots</name>
+            <url>http://artifacts.ecm4u.intra:8081/artifactory/ecm4u-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>ecm4u-releases</id>
+            <name>ecm4u Snapshots</name>
+            <url>http://artifacts.ecm4u.intra:8081/artifactory/ecm4u-releases/</url>
+        </repository>
+    </distributionManagement>
 
   <modules>
     <module>projects/3rd-party</module>
     <module>projects/dev-tomcat</module>
-    <!--
     <module>projects/legacy-lucene</module>
-    -->
     <module>projects/mbeans</module>
     <module>projects/repository</module>
     <module>projects/remote-api</module>
