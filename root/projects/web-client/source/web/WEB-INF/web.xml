@@ -214,10 +214,12 @@
       <url-pattern>/webdav/*</url-pattern>
    </filter-mapping>
 
+   <!-- ALF-21757 and ALF-21521 disable for mobile apps
    <filter-mapping>
       <filter-name>WebDAV Authentication Filter</filter-name>
       <url-pattern>/cmisatom/*</url-pattern>
    </filter-mapping>
+   -->
 
    <filter-mapping>
       <filter-name>X509AuthFilter</filter-name>
