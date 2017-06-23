@@ -6,6 +6,7 @@ This is a patched version of Alfresco 5.2.e, based on [the subversion tag](https
 * Don't build the module `legacy-lucene`.
 * ~~Patched `QuickShareServiceImpl.java` to work correctly in a multi-tenant setup.~~
 * ALF-21521: Disable the Global Authentication Filter.
+* ALF-21757: Disable Authentication Filter for mobile apps on webdav to force basic auth
 * ALF-21749: Catch missing name parts of site manager in admin FTL.
 
 You can create a diff to the tag `5.2.e` by executing 
